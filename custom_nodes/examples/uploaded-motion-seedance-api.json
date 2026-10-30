@@ -1,0 +1,88 @@
+{
+  "1": {
+    "class_type": "CartwheelLoadMotionAndCamera",
+    "inputs": {
+      "actor_1": "UPLOAD_ACTOR.glb",
+      "actor_2": "",
+      "actor_3": "",
+      "actor_4": "",
+      "camera_file": ""
+    }
+  },
+  "2": {
+    "class_type": "CartwheelCameraPreview",
+    "inputs": {
+      "motion_index": 0,
+      "render_size": "720p",
+      "render_fps": "24",
+      "render_view": "BROWSER_REGISTERS_THIS",
+      "render_camera": 0,
+      "camera_settings": "",
+      "motion": [
+        "1",
+        0
+      ],
+      "camera": [
+        "1",
+        1
+      ]
+    }
+  },
+  "3": {
+    "class_type": "CartwheelPrepareVideoReferences",
+    "inputs": {
+      "control_video": [
+        "2",
+        0
+      ],
+      "model": "Seedance 2.5",
+      "output_duration": 0,
+      "start_seconds": 0,
+      "reference_duration": 0,
+      "prompt": "Follow Video 1 exactly for motion, timing, blocking and camera movement. Keep the same framing from start to finish, with no added zooms, cuts or close-ups. Use Video 1 for motion only, not for its look. Re-render the scene to match the reference images or description.\n\nCinematic, photoreal, shot on film. Natural, motivated lighting that fits the scene, with film grain and realistic texture.\n\nAvoid: changing the motion or framing, added zooms or cuts, letterbox bars, a CGI or digital look."
+    }
+  },
+  "4": {
+    "class_type": "ByteDance2ReferenceNodeV2",
+    "inputs": {
+      "model": "Seedance 2.5",
+      "model.prompt": [
+        "3",
+        3
+      ],
+      "model.resolution": "720p",
+      "model.ratio": [
+        "3",
+        5
+      ],
+      "model.duration": [
+        "3",
+        4
+      ],
+      "seed": 0,
+      "watermark": false,
+      "model.generate_audio": true,
+      "model.task_type": "reference",
+      "model.output_format": "mp4",
+      "model.auto_downscale": true,
+      "model.auto_upscale": false,
+      "model.reference_videos.video_1": [
+        "3",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "4",
+        0
+      ],
+      "filename_prefix": "cartwheel/seedance",
+      "format": "mp4",
+      "format.codec": "h264",
+      "format.codec.encoding": "auto"
+    }
+  }
+}

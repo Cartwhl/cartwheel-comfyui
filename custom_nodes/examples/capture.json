@@ -1,0 +1,232 @@
+{
+  "last_node_id": 3,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadVideo",
+      "pos": [
+        100,
+        160
+      ],
+      "size": [
+        360,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CartwheelPerformanceCapture",
+      "pos": [
+        540,
+        160
+      ],
+      "size": [
+        410,
+        420
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "preview",
+          "type": "VIDEO",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "capture",
+          "type": "CARTWHEEL_CAPTURE",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "glb",
+          "type": "FILE_3D_GLB",
+          "links": [
+            2
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "export_path",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "source_video",
+          "type": "VIDEO",
+          "links": null,
+          "slot_index": 4
+        },
+        {
+          "name": "source_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 5
+        },
+        {
+          "name": "source_fps",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 6
+        },
+        {
+          "name": "source_frames",
+          "type": "INT",
+          "links": null,
+          "slot_index": 7
+        },
+        {
+          "name": "source_duration",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 8
+        },
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "links": null,
+          "slot_index": 9
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "links": null,
+          "slot_index": 10
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelPerformanceCapture"
+      },
+      "widgets_values": [
+        1,
+        true,
+        true,
+        "Smoothed (faster)",
+        "60",
+        "None"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "Preview3DAdvanced",
+      "pos": [
+        1040,
+        160
+      ],
+      "size": [
+        420,
+        550
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_FBX,FILE_3D_OBJ,FILE_3D_STL,FILE_3D_USDZ,FILE_3D",
+          "link": 2
+        },
+        {
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D",
+          "links": null
+        },
+        {
+          "name": "model_3d_info",
+          "type": "LOAD3D_MODEL_INFO",
+          "links": null
+        },
+        {
+          "name": "camera_info",
+          "type": "LOAD3D_CAMERA",
+          "links": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Preview3DAdvanced"
+      },
+      "widgets_values": [
+        {},
+        1024,
+        1024
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "VIDEO"
+    ],
+    [
+      2,
+      2,
+      2,
+      3,
+      0,
+      "FILE_3D_GLB"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "units": "meters",
+  "up": "Y",
+  "fps": 30,
+  "aspect": 1.7777777777777777,
+  "frames": [
+    {
+      "time": 0,
+      "position": [
+        0,
+        1,
+        4
+      ],
+      "target": [
+        0,
+        1,
+        0
+      ],
+      "fov": 37.8493,
+      "roll": 0
+    },
+    {
+      "time": 2,
+      "position": [
+        1,
+        1,
+        4
+      ],
+      "target": [
+        0,
+        1,
+        0
+      ],
+      "fov": 37.8493,
+      "roll": 0
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "last_node_id": 3,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CartwheelLoadCapture",
+      "pos": [
+        80,
+        130
+      ],
+      "size": [
+        340,
+        95
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "capture",
+          "type": "CARTWHEEL_CAPTURE",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "source_video",
+          "type": "VIDEO",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "source_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "source_fps",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "source_frames",
+          "type": "INT",
+          "links": null,
+          "slot_index": 4
+        },
+        {
+          "name": "source_duration",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 5
+        },
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "links": [
+            1
+          ],
+          "slot_index": 6
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "links": null,
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelLoadCapture"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 2,
+      "type": "CartwheelCameraPreview",
+      "pos": [
+        470,
+        110
+      ],
+      "size": [
+        820,
+        660
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "link": 1
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelCameraPreview"
+      },
+      "widgets_values": [
+        0,
+        "720p",
+        "24",
+        "",
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "type": "SaveVideo",
+      "pos": [
+        1390,
+        130
+      ],
+      "size": [
+        380,
+        340
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "cartwheel/camera_test",
+        "mp4",
+        "h264"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      6,
+      2,
+      0,
+      "CARTWHEEL_MOTION"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

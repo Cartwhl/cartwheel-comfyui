@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+let definition;
+const source=readFileSync(new URL('../web/settings.js',import.meta.url),'utf8').replace(/^import .*;\s*/,'');
+vm.runInNewContext(source,{app:{registerExtension(value){definition=value;}}});
+assert.equal(definition.settings.length,1);
+const [key]=definition.settings;
+assert.equal(key.id,'Cartwheel.Connection.ProductionApiKey');
+assert.equal(key.name,'API key');assert.equal(key.type,'text');assert.equal(key.attrs.type,'password');assert.equal(key.defaultValue,'');
+console.log('PASS: one masked API key field; no environment or server URL controls.');

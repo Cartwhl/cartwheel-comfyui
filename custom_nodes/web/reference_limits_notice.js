@@ -1,0 +1,1 @@
+export const REFERENCE_LIMITS_NOTICE = 'Each model limits reference counts and media durations. Video references share a total duration budget, including the camera video and enabled passes. If you reach a limit, shorten clips or disable references.';

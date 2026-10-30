@@ -1,0 +1,1776 @@
+{
+  "last_node_id": 57,
+  "last_link_id": 62,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "LoadVideo",
+      "pos": [
+        60,
+        550
+      ],
+      "size": [
+        340,
+        340
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "title": "A1 \u00b7 Load source video",
+      "color": "#293a44",
+      "bgcolor": "#1d2b33"
+    },
+    {
+      "id": 9,
+      "type": "Video Slice",
+      "title": "A2 \u00b7 Trim before Performance Capture",
+      "pos": [
+        450,
+        550
+      ],
+      "size": [
+        340,
+        190
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Video Slice"
+      },
+      "widgets_values": [
+        0,
+        0,
+        false
+      ],
+      "color": "#293a44",
+      "bgcolor": "#1d2b33"
+    },
+    {
+      "id": 10,
+      "type": "CartwheelPerformanceCapture",
+      "pos": [
+        850,
+        550
+      ],
+      "size": [
+        440,
+        440
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 2,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "preview",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "capture",
+          "type": "CARTWHEEL_CAPTURE",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "glb",
+          "type": "FILE_3D_GLB",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "export_path",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "source_video",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "source_info",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "source_fps",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "source_frames",
+          "type": "INT",
+          "links": [],
+          "slot_index": 7
+        },
+        {
+          "name": "source_duration",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 8
+        },
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "links": [
+            28
+          ],
+          "slot_index": 9
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "links": [],
+          "slot_index": 10
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelPerformanceCapture"
+      },
+      "widgets_values": [
+        1,
+        true,
+        true,
+        "Smoothed (faster)",
+        "60",
+        "None",
+        0
+      ],
+      "title": "A3 \u00b7 Fresh Cartwheel Performance Capture",
+      "color": "#293a44",
+      "bgcolor": "#1d2b33"
+    },
+    {
+      "id": 11,
+      "type": "CartwheelLoadMotionAndCamera",
+      "pos": [
+        60,
+        1962
+      ],
+      "size": [
+        640,
+        560
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "links": [
+            30
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "motion_info",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelLoadMotionAndCamera"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Saved jobs",
+        ""
+      ],
+      "title": "C \u00b7 Load Motion \u00b7 Upload / Saved Jobs",
+      "color": "#293a44",
+      "bgcolor": "#1d2b33"
+    },
+    {
+      "id": 13,
+      "type": "CartwheelMotionSource",
+      "title": "1 \u00b7 CHOOSE MOTION SOURCE",
+      "pos": [
+        810,
+        2032
+      ],
+      "size": [
+        440,
+        260
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "fresh_motion",
+          "type": "CARTWHEEL_MOTION",
+          "link": 28
+        },
+        {
+          "name": "swing_motion",
+          "type": "CARTWHEEL_MOTION",
+          "link": 34
+        },
+        {
+          "name": "uploaded_motion",
+          "type": "CARTWHEEL_MOTION",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "links": [
+            31
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelMotionSource"
+      },
+      "widgets_values": [
+        "Load motion"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CartwheelCameraPreview",
+      "pos": [
+        1440,
+        864
+      ],
+      "size": [
+        1560,
+        1700
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "link": 31
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            3,
+            32,
+            38
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "links": []
+        },
+        {
+          "name": "camera_json",
+          "type": "STRING",
+          "links": [
+            48
+          ]
+        },
+        {
+          "name": "camera_file",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "first_frame",
+          "type": "IMAGE",
+          "links": [
+            42,
+            60
+          ]
+        },
+        {
+          "name": "last_frame",
+          "type": "IMAGE",
+          "links": [
+            43
+          ]
+        },
+        {
+          "name": "depth",
+          "type": "VIDEO",
+          "links": [
+            51,
+            55
+          ]
+        },
+        {
+          "name": "normal",
+          "type": "VIDEO",
+          "links": [
+            52,
+            56
+          ]
+        },
+        {
+          "name": "pose",
+          "type": "VIDEO",
+          "links": [
+            53,
+            57
+          ]
+        },
+        {
+          "name": "use_frame_images",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelCameraPreview",
+        "cartwheel_endpoint_frame_control": 1
+      },
+      "widgets_values": [
+        0,
+        "720p",
+        "24",
+        "",
+        0,
+        "",
+        false
+      ],
+      "title": "2B \u00b7 Cartwheel Camera Preview \u00b7 EDIT HERE"
+    },
+    {
+      "id": 3,
+      "type": "CartwheelPrepareVideoReferences",
+      "pos": [
+        3230,
+        636
+      ],
+      "size": [
+        600,
+        1000
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "control_video",
+          "type": "VIDEO",
+          "link": 3
+        },
+        {
+          "name": "reference_image",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "secondary_video",
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "reference_library",
+          "type": "CARTWHEEL_REFERENCES",
+          "link": 35,
+          "shape": 7
+        },
+        {
+          "name": "first_frame_image",
+          "type": "IMAGE",
+          "link": 44,
+          "shape": 7
+        },
+        {
+          "name": "last_frame_image",
+          "type": "IMAGE",
+          "link": 45,
+          "shape": 7
+        },
+        {
+          "name": "depth_video",
+          "type": "VIDEO",
+          "link": 51
+        },
+        {
+          "name": "normal_video",
+          "type": "VIDEO",
+          "link": 52
+        },
+        {
+          "name": "pose_video",
+          "type": "VIDEO",
+          "link": 53
+        },
+        {
+          "name": "use_endpoint_images",
+          "type": "BOOLEAN",
+          "link": 54,
+          "label": "First/last frame images"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "control_video",
+          "type": "VIDEO",
+          "links": [
+            40
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "reference_image",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "duration",
+          "type": "INT",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "ratio",
+          "type": "COMBO",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "reference_info",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "secondary_video",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 7
+        },
+        {
+          "name": "use_h3",
+          "type": "BOOLEAN",
+          "links": [],
+          "slot_index": 8
+        },
+        {
+          "name": "prepared_references",
+          "type": "CARTWHEEL_PREPARED_REFERENCES",
+          "links": [
+            36
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelPrepareVideoReferences",
+        "cartwheel_camera_video_toggles": 1
+      },
+      "widgets_values": [
+        "Seedance 2.5",
+        0,
+        0,
+        0,
+        "Follow Video 1 exactly for motion, timing, blocking and camera movement. Keep the same framing from start to finish, with no added zooms, cuts or close-ups. Use Video 1 for motion only, not for its look. Re-render the scene to match the reference images or description.\n\nCinematic, photoreal, shot on film. Natural, motivated lighting that fits the scene, with film grain and realistic texture.\n\nAvoid: changing the motion or framing, added zooms or cuts, letterbox bars, a CGI or digital look.",
+        0,
+        0,
+        0,
+        0,
+        false,
+        false,
+        false,
+        true,
+        "Color",
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "title": "3 \u00b7 Prepare Video References \u00b7 SELECT MODEL HERE"
+    },
+    {
+      "id": 7,
+      "type": "SaveVideo",
+      "pos": [
+        4650,
+        986
+      ],
+      "size": [
+        580,
+        680
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "cartwheel/result",
+        "mp4",
+        "h264",
+        "auto"
+      ],
+      "title": "4 \u00b7 Result video \u00b7 preview or generated",
+      "color": "#63333d",
+      "bgcolor": "#35252a"
+    },
+    {
+      "id": 40,
+      "type": "Note",
+      "title": "START HERE \u00b7 full workflow",
+      "pos": [
+        60,
+        30
+      ],
+      "size": [
+        1230,
+        370
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "1. Choose one source: Performance Capture, Swing Choreo, or Load motion.\n2. For existing local results, open Load Motion \u2192 Saved jobs, refresh, and select a job. No Cartwheel connection is needed for saved or uploaded files.\n3. Keep PREVIEW OR GENERATE on Preview camera and Run. Edit the camera, then Run again to update/save it.\n4. Add optional creative references, choose Seedance/H3, then select Generate final video when ready.\nEvery completed camera preview saves a local job. Motion and camera assets remain in your ComfyUI output folder for reuse or Blender."
+      ],
+      "color": "#263749",
+      "bgcolor": "#17232f"
+    },
+    {
+      "id": 41,
+      "type": "Note",
+      "title": "SOURCE SELECTION \u00b7 one dropdown",
+      "pos": [
+        60,
+        2664
+      ],
+      "size": [
+        1230,
+        370
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "Choose Performance Capture, Swing Choreo or Load motion. Only the selected source runs.\nLoad motion offers Upload files and Saved jobs. Saved jobs reads this ComfyUI output folder without contacting Cartwheel. Existing local captures also appear there.\nRun Camera Preview to save a reusable local job, including actors, original camera, edited camera samples/settings and a preview. Find the saved assets in your ComfyUI output/cartwheel/saved_jobs folder.\nFor new paid jobs, select Performance Capture or Swing Choreo explicitly."
+      ],
+      "color": "#263749",
+      "bgcolor": "#17232f"
+    },
+    {
+      "id": 42,
+      "type": "Note",
+      "title": "REFERENCES + TRIMMING \u00b7 optional inputs are prewired",
+      "pos": [
+        3200,
+        30
+      ],
+      "size": [
+        930,
+        440
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "CREATIVE REFERENCES\nAdd multiple images, videos and audio in the Reference Library below. Uncheck an entry to omit it without removing the file. Enabled files are numbered in list order; the selected camera reference is Video 1 when enabled. Describe their roles in your prompt.\nSeedance 2.5: up to 30 images, 10 videos, 10 audios. H3: up to 9 images, 3 videos, 3 audios. Counts include the camera video. Video references share 30s (Seedance) / 15s (H3); audio has a separate shared allowance. Automatic windows split the budget. Each video/audio needs at least 1.8s. Native provider validation also applies.\nPrepare never submits a job. Generate uses the selected model\u2019s built-in ComfyUI API node. Ratio remains adaptive.\nUse edited camera video is on by default. Depth, normal and pose video switches are off. Enable any combination; each video counts toward the selected model\u2019s shared count and duration limits. Extra passes may require a shorter clip or fewer references. Use original audio restores the matching soundtrack after generation, not as a model reference.\nFirst/last image styling is optional. Choose a service and enable Generate styled image in those nodes; preview them and enable Use start/end frame images for video in Review endpoint images. The inclusion toggle is off by default."
+      ],
+      "color": "#263749",
+      "bgcolor": "#17232f"
+    },
+    {
+      "id": 43,
+      "type": "Note",
+      "title": "OUTPUTS \u00b7 save and compare",
+      "pos": [
+        4650,
+        636
+      ],
+      "size": [
+        580,
+        230
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "PREVIEW FIRST\nPreview camera renders and saves the edited camera video without requesting either video model or loading the creative references.\nAfter editing, choose Generate final video and Run. Only the selected model is submitted.\nSave edited camera retains your full control render. Result video saves the model output. Comparison saves the selected control window beside the generated result, starting together and holding the shorter side at its last frame. Comparison is silent.\nThe action remains selected until you change it.\nFinal videos are trimmed to the selected camera window. Original audio is restored when selected and available. Camera Preview also exposes sampled camera JSON and endpoint images."
+      ],
+      "color": "#263749",
+      "bgcolor": "#17232f"
+    },
+    {
+      "id": 44,
+      "type": "Note",
+      "title": "CAMERA INPUT \u00b7 source independent",
+      "pos": [
+        1440,
+        30
+      ],
+      "size": [
+        1560,
+        300
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "Motion includes its starting camera; a separate camera connection is optional.\nSaved jobs restores the edited camera as a sampled path. Original camera files and editable settings are retained in the local output folder.\nUploads expect individual animated actor files (GLB preferred) and an optional camera. Whole scenes with up to four actors and an embedded camera also work. Keep shared timing and world placement; GLB uses meters, Y-up.\nPerspective camera JSON can be imported into Blender with the helper included in the job ZIP. Fisheye paths remain supported in this viewer; the helper does not reproduce the fisheye shader.\nDepth, normal and pose videos preview in their own display directly below Camera Preview. Their AI-reference toggles are in Prepare and default off. Optional start/end changes are inside Custom start/end settings; each setting is disabled until checked.\nName a scene and click Save scene in the top bar to create a named local snapshot. Press F over Scene to focus the selected camera/path point or aim marker.\nRight-click a camera timeline block to split at the playhead, connect paths, set transitions or delete a move. Drag edges to retime; empty time holds the camera. Save scene retains all blocks."
+      ],
+      "color": "#263749",
+      "bgcolor": "#17232f"
+    },
+    {
+      "id": 45,
+      "type": "CartwheelWorkflowStep",
+      "pos": [
+        1440,
+        520
+      ],
+      "size": [
+        1560,
+        240
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "camera_video",
+          "type": "VIDEO",
+          "link": 32
+        },
+        {
+          "name": "generated_video",
+          "type": "VIDEO",
+          "link": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            33
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "generate",
+          "type": "BOOLEAN",
+          "links": [
+            39
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelWorkflowStep"
+      },
+      "widgets_values": [
+        "Preview camera"
+      ],
+      "title": "2A \u00b7 BEFORE RUNNING \u00b7 PREVIEW OR GENERATE",
+      "color": "#24516e",
+      "bgcolor": "#163348"
+    },
+    {
+      "id": 46,
+      "type": "CartwheelSwingChoreo",
+      "title": "B \u00b7 Swing Choreo \u00b7 text to motion",
+      "pos": [
+        60,
+        1206
+      ],
+      "size": [
+        600,
+        540
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 2,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "links": [
+            34
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "capture",
+          "type": "CARTWHEEL_CAPTURE",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "glb",
+          "type": "FILE_3D_GLB",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "preview",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 4
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelSwingChoreo"
+      },
+      "widgets_values": [
+        "",
+        8,
+        false,
+        "60",
+        "None"
+      ],
+      "color": "#343e2f",
+      "bgcolor": "#4b5a43"
+    },
+    {
+      "id": 47,
+      "type": "CartwheelReferenceLibrary",
+      "pos": [
+        3230,
+        1740
+      ],
+      "size": [
+        600,
+        420
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "references",
+          "type": "CARTWHEEL_REFERENCES",
+          "links": [
+            35
+          ]
+        }
+      ],
+      "title": "CREATIVE REFERENCES \u00b7 add files here",
+      "properties": {
+        "Node name for S&R": "CartwheelReferenceLibrary"
+      },
+      "widgets_values": [
+        "[]"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "CartwheelGenerateVideo",
+      "pos": [
+        3980,
+        986
+      ],
+      "size": [
+        470,
+        170
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "references",
+          "type": "CARTWHEEL_PREPARED_REFERENCES",
+          "link": 36
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            37,
+            41
+          ]
+        }
+      ],
+      "title": "GENERATE \u00b7 selected Seedance / H3 model",
+      "properties": {
+        "Node name for S&R": "CartwheelGenerateVideo"
+      },
+      "widgets_values": [
+        42,
+        "fixed",
+        true
+      ]
+    },
+    {
+      "id": 49,
+      "type": "SaveVideo",
+      "pos": [
+        3980,
+        1260
+      ],
+      "size": [
+        470,
+        350
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 38
+        }
+      ],
+      "outputs": [],
+      "title": "SAVE \u00b7 edited camera video",
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "cartwheel/edited_camera",
+        "mp4",
+        "h264",
+        "auto"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "CartwheelCompareVideos",
+      "pos": [
+        4650,
+        1770
+      ],
+      "size": [
+        650,
+        410
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "enabled",
+          "type": "BOOLEAN",
+          "link": 39
+        },
+        {
+          "name": "camera_video",
+          "type": "VIDEO",
+          "link": 40
+        },
+        {
+          "name": "generated_video",
+          "type": "VIDEO",
+          "link": 41
+        }
+      ],
+      "outputs": [
+        {
+          "name": "comparison",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "title": "COMPARE \u00b7 edited camera and generated result",
+      "properties": {
+        "Node name for S&R": "CartwheelCompareVideos"
+      },
+      "widgets_values": [
+        false
+      ]
+    },
+    {
+      "id": 51,
+      "type": "CartwheelEndpointImage",
+      "title": "OPTIONAL \u00b7 Style first frame",
+      "pos": [
+        3230,
+        2420
+      ],
+      "size": [
+        490,
+        550
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "CartwheelEndpointImage"
+      },
+      "inputs": [
+        {
+          "name": "image",
+          "label": "Camera reference",
+          "type": "IMAGE",
+          "link": 42
+        },
+        {
+          "name": "reference_1",
+          "label": "Image reference 1",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_2",
+          "label": "Image reference 2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_3",
+          "label": "Image reference 3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_4",
+          "label": "Image reference 4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_5",
+          "label": "Image reference 5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "references",
+          "label": "Image references",
+          "type": "CARTWHEEL_FRAME_REFERENCES",
+          "link": 58
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            44,
+            46,
+            61
+          ]
+        }
+      ],
+      "widgets_values": [
+        false,
+        "OpenAI GPT Image",
+        "Recreate this camera frame in the desired final visual style. Preserve the exact camera viewpoint, framing, performer poses, number of performers and their interactions.",
+        42
+      ]
+    },
+    {
+      "id": 52,
+      "type": "CartwheelEndpointImage",
+      "title": "OPTIONAL \u00b7 Style last frame",
+      "pos": [
+        3780,
+        2420
+      ],
+      "size": [
+        490,
+        550
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "CartwheelEndpointImage"
+      },
+      "inputs": [
+        {
+          "name": "image",
+          "label": "Camera reference",
+          "type": "IMAGE",
+          "link": 43
+        },
+        {
+          "name": "reference_1",
+          "label": "Image reference 1",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_2",
+          "label": "Image reference 2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_3",
+          "label": "Image reference 3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_4",
+          "label": "Image reference 4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_5",
+          "label": "Image reference 5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "references",
+          "label": "Image references",
+          "type": "CARTWHEEL_FRAME_REFERENCES",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            45,
+            47
+          ]
+        }
+      ],
+      "widgets_values": [
+        false,
+        "OpenAI GPT Image",
+        "Recreate this camera frame in the desired final visual style. Preserve the exact camera viewpoint, framing, performer poses, number of performers and their interactions.",
+        42
+      ]
+    },
+    {
+      "id": 53,
+      "type": "CartwheelEndpointReview",
+      "title": "OPTIONAL \u00b7 Review endpoint images",
+      "pos": [
+        4330,
+        2396
+      ],
+      "size": [
+        700,
+        430
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "CartwheelEndpointReview",
+        "cartwheel_endpoint_frame_control": 1
+      },
+      "inputs": [
+        {
+          "name": "first",
+          "type": "IMAGE",
+          "link": 46
+        },
+        {
+          "name": "last",
+          "type": "IMAGE",
+          "link": 47
+        }
+      ],
+      "outputs": [
+        {
+          "name": "use_frame_images",
+          "type": "BOOLEAN",
+          "links": [
+            54
+          ],
+          "slot_index": 0
+        }
+      ],
+      "widgets_values": [
+        false,
+        false
+      ]
+    },
+    {
+      "id": 54,
+      "type": "CartwheelCameraData",
+      "title": "CAMERA DATA \u00b7 reusable animation",
+      "pos": [
+        1850,
+        3092
+      ],
+      "size": [
+        650,
+        250
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "CartwheelCameraData"
+      },
+      "inputs": [
+        {
+          "name": "camera_json",
+          "type": "STRING",
+          "link": 48
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positions",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "targets",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "focal_lengths",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "fovs",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "camera_json",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "widgets_values": []
+    },
+    {
+      "id": 55,
+      "type": "CartwheelControlPreview",
+      "pos": [
+        1440,
+        2668
+      ],
+      "size": [
+        1560,
+        320
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "depth",
+          "type": "VIDEO",
+          "link": 55
+        },
+        {
+          "name": "normal",
+          "type": "VIDEO",
+          "link": 56
+        },
+        {
+          "name": "pose",
+          "type": "VIDEO",
+          "link": 57
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "CartwheelControlPreview"
+      },
+      "widgets_values": [],
+      "title": "Control Videos \u00b7 Depth / Normal / Pose \u00b7 Optional AI references"
+    },
+    {
+      "id": 56,
+      "type": "CartwheelImageReferences",
+      "pos": [
+        3230,
+        3074
+      ],
+      "size": [
+        1040,
+        350
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "references",
+          "type": "CARTWHEEL_FRAME_REFERENCES",
+          "links": [
+            58,
+            59
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelImageReferences"
+      },
+      "widgets_values": [
+        "[]"
+      ],
+      "title": "OPTIONAL \u00b7 Character / environment image references \u00b7 Up to 5"
+    },
+    {
+      "id": 57,
+      "type": "CartwheelMatchFirstFrame",
+      "pos": [
+        4330,
+        2930
+      ],
+      "size": [
+        650,
+        180
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "original_first",
+          "type": "IMAGE",
+          "link": 60
+        },
+        {
+          "name": "styled_first",
+          "type": "IMAGE",
+          "link": 61
+        },
+        {
+          "name": "references",
+          "type": "CARTWHEEL_FRAME_REFERENCES",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "references",
+          "type": "CARTWHEEL_FRAME_REFERENCES",
+          "links": [
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelMatchFirstFrame"
+      },
+      "widgets_values": [],
+      "title": "Automatic \u00b7 Match first-frame identities"
+    }
+  ],
+  "links": [
+    [
+      1,
+      8,
+      0,
+      9,
+      0,
+      "VIDEO"
+    ],
+    [
+      2,
+      9,
+      0,
+      10,
+      0,
+      "VIDEO"
+    ],
+    [
+      3,
+      2,
+      0,
+      3,
+      0,
+      "VIDEO"
+    ],
+    [
+      28,
+      10,
+      9,
+      13,
+      0,
+      "CARTWHEEL_MOTION"
+    ],
+    [
+      30,
+      11,
+      0,
+      13,
+      2,
+      "CARTWHEEL_MOTION"
+    ],
+    [
+      31,
+      13,
+      0,
+      2,
+      0,
+      "CARTWHEEL_MOTION"
+    ],
+    [
+      32,
+      2,
+      0,
+      45,
+      0,
+      "VIDEO"
+    ],
+    [
+      33,
+      45,
+      0,
+      7,
+      0,
+      "VIDEO"
+    ],
+    [
+      34,
+      46,
+      0,
+      13,
+      1,
+      "CARTWHEEL_MOTION"
+    ],
+    [
+      35,
+      47,
+      0,
+      3,
+      4,
+      "CARTWHEEL_REFERENCES"
+    ],
+    [
+      36,
+      3,
+      9,
+      48,
+      0,
+      "CARTWHEEL_PREPARED_REFERENCES"
+    ],
+    [
+      37,
+      48,
+      0,
+      45,
+      1,
+      "VIDEO"
+    ],
+    [
+      38,
+      2,
+      0,
+      49,
+      0,
+      "VIDEO"
+    ],
+    [
+      39,
+      45,
+      1,
+      50,
+      0,
+      "BOOLEAN"
+    ],
+    [
+      40,
+      3,
+      0,
+      50,
+      1,
+      "VIDEO"
+    ],
+    [
+      41,
+      48,
+      0,
+      50,
+      2,
+      "VIDEO"
+    ],
+    [
+      42,
+      2,
+      4,
+      51,
+      0,
+      "IMAGE"
+    ],
+    [
+      43,
+      2,
+      5,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      44,
+      51,
+      0,
+      3,
+      5,
+      "IMAGE"
+    ],
+    [
+      45,
+      52,
+      0,
+      3,
+      6,
+      "IMAGE"
+    ],
+    [
+      46,
+      51,
+      0,
+      53,
+      0,
+      "IMAGE"
+    ],
+    [
+      47,
+      52,
+      0,
+      53,
+      1,
+      "IMAGE"
+    ],
+    [
+      48,
+      2,
+      2,
+      54,
+      0,
+      "STRING"
+    ],
+    [
+      51,
+      2,
+      6,
+      3,
+      7,
+      "VIDEO"
+    ],
+    [
+      52,
+      2,
+      7,
+      3,
+      8,
+      "VIDEO"
+    ],
+    [
+      53,
+      2,
+      8,
+      3,
+      9,
+      "VIDEO"
+    ],
+    [
+      54,
+      53,
+      0,
+      3,
+      10,
+      "BOOLEAN"
+    ],
+    [
+      55,
+      2,
+      6,
+      55,
+      0,
+      "VIDEO"
+    ],
+    [
+      56,
+      2,
+      7,
+      55,
+      1,
+      "VIDEO"
+    ],
+    [
+      57,
+      2,
+      8,
+      55,
+      2,
+      "VIDEO"
+    ],
+    [
+      58,
+      56,
+      0,
+      51,
+      6,
+      "CARTWHEEL_FRAME_REFERENCES"
+    ],
+    [
+      59,
+      56,
+      0,
+      57,
+      2,
+      "CARTWHEEL_FRAME_REFERENCES"
+    ],
+    [
+      60,
+      2,
+      4,
+      57,
+      0,
+      "IMAGE"
+    ],
+    [
+      61,
+      51,
+      0,
+      57,
+      1,
+      "IMAGE"
+    ],
+    [
+      62,
+      57,
+      0,
+      52,
+      6,
+      "CARTWHEEL_FRAME_REFERENCES"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "1A \u00b7 PERFORMANCE CAPTURE \u00b7 managed by source selector",
+      "bounding": [
+        10,
+        444,
+        1330,
+        596
+      ],
+      "color": "#615944",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "1B \u00b7 SWING CHOREO \u00b7 managed by source selector",
+      "bounding": [
+        10,
+        1100,
+        700,
+        696
+      ],
+      "color": "#526b46",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "1C \u00b7 LOAD MOTION \u00b7 Upload files / Saved jobs",
+      "bounding": [
+        10,
+        1856,
+        1290,
+        716
+      ],
+      "color": "#3f685b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "2 \u00b7 PREVIEW FIRST \u2192 EDIT CAMERA \u2192 GENERATE",
+      "bounding": [
+        1390,
+        414,
+        1660,
+        2978
+      ],
+      "color": "#326b93",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "3 \u00b7 PREPARE + CREATIVE REFERENCES",
+      "bounding": [
+        3180,
+        530,
+        700,
+        1680
+      ],
+      "color": "#3f6375",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "4 \u00b7 GENERATE + SAVE + COMPARE",
+      "bounding": [
+        3930,
+        530,
+        1420,
+        1700
+      ],
+      "color": "#4f647c",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "OPTIONAL \u00b7 FIRST / LAST IMAGE STYLING \u00b7 starts disabled",
+      "bounding": [
+        3180,
+        2290,
+        1900,
+        1184
+      ],
+      "color": "#665783",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.38,
+      "offset": [
+        120,
+        100
+      ]
+    },
+    "frontendVersion": "1.55.17",
+    "cartwheel_camera_timeline_version": 1
+  },
+  "version": 0.4
+}

@@ -1,0 +1,439 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 9,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CartwheelLoadHistory",
+      "pos": [
+        50,
+        80
+      ],
+      "size": [
+        530,
+        360
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "capture",
+          "type": "CARTWHEEL_CAPTURE",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "source_video",
+          "type": "VIDEO",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "source_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "source_fps",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 3
+        },
+        {
+          "name": "source_frames",
+          "type": "INT",
+          "links": null,
+          "slot_index": 4
+        },
+        {
+          "name": "source_duration",
+          "type": "FLOAT",
+          "links": null,
+          "slot_index": 5
+        },
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "links": [
+            1
+          ],
+          "slot_index": 6
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "links": null,
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelLoadHistory"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CartwheelCameraPreview",
+      "pos": [
+        640,
+        80
+      ],
+      "size": [
+        1100,
+        900
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "motion",
+          "type": "CARTWHEEL_MOTION",
+          "link": 1
+        },
+        {
+          "name": "camera",
+          "type": "CARTWHEEL_CAMERA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelCameraPreview"
+      },
+      "widgets_values": [
+        0,
+        "720p",
+        "24",
+        "",
+        0,
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CartwheelPrepareVideoReferences",
+      "pos": [
+        1800,
+        80
+      ],
+      "size": [
+        560,
+        600
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "control_video",
+          "type": "VIDEO",
+          "link": 2
+        },
+        {
+          "name": "reference_image",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "secondary_video",
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "control_video",
+          "type": "VIDEO",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "reference_image",
+          "type": "IMAGE",
+          "links": null,
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": null,
+          "slot_index": 2
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            6
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "duration",
+          "type": "INT",
+          "links": [
+            7
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "ratio",
+          "type": "COMBO",
+          "links": [
+            8
+          ],
+          "slot_index": 5
+        },
+        {
+          "name": "reference_info",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 6
+        },
+        {
+          "name": "secondary_video",
+          "type": "VIDEO",
+          "links": null,
+          "slot_index": 7
+        },
+        {
+          "name": "use_h3",
+          "type": "BOOLEAN",
+          "links": null,
+          "slot_index": 8
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CartwheelPrepareVideoReferences"
+      },
+      "widgets_values": [
+        "Seedance 2.5",
+        0,
+        0,
+        0,
+        "Follow Video 1 exactly for motion, timing, blocking and camera movement. Keep the same framing from start to finish, with no added zooms, cuts or close-ups. Use Video 1 for motion only, not for its look. Re-render the scene to match the reference images or description.\n\nCinematic, photoreal, shot on film. Natural, motivated lighting that fits the scene, with film grain and realistic texture.\n\nAvoid: changing the motion or framing, added zooms or cuts, letterbox bars, a CGI or digital look.",
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 4,
+      "type": "ByteDance2ReferenceNodeV2",
+      "pos": [
+        2420,
+        80
+      ],
+      "size": [
+        580,
+        620
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model.reference_videos.video_1",
+          "type": "VIDEO",
+          "link": 5
+        },
+        {
+          "name": "model.prompt",
+          "type": "STRING",
+          "link": 6,
+          "widget": {
+            "name": "model.prompt"
+          }
+        },
+        {
+          "name": "model.duration",
+          "type": "INT",
+          "link": 7,
+          "widget": {
+            "name": "model.duration"
+          }
+        },
+        {
+          "name": "model.ratio",
+          "type": "COMBO",
+          "link": 8,
+          "widget": {
+            "name": "model.ratio"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "draft_task_id",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ByteDance2ReferenceNodeV2"
+      },
+      "widgets_values": [
+        "Seedance 2.5",
+        "",
+        "720p",
+        "adaptive",
+        5,
+        true,
+        "reference",
+        "mp4",
+        true,
+        false,
+        0,
+        "fixed",
+        false
+      ],
+      "widgets_values_named": {
+        "model": "Seedance 2.5",
+        "model.prompt": "Follow Video 1 exactly for motion, timing, blocking and camera movement. Keep the same framing from start to finish, with no added zooms, cuts or close-ups. Use Video 1 for motion only, not for its look. Re-render the scene to match the reference images or description.\n\nCinematic, photoreal, shot on film. Natural, motivated lighting that fits the scene, with film grain and realistic texture.\n\nAvoid: changing the motion or framing, added zooms or cuts, letterbox bars, a CGI or digital look.",
+        "model.resolution": "720p",
+        "model.ratio": "adaptive",
+        "model.duration": 5,
+        "seed": 0,
+        "control_after_generate": "fixed",
+        "watermark": false,
+        "model.generate_audio": true,
+        "model.task_type": "reference",
+        "model.output_format": "mp4",
+        "model.auto_downscale": true,
+        "model.auto_upscale": false
+      }
+    },
+    {
+      "id": 5,
+      "type": "SaveVideo",
+      "pos": [
+        3080,
+        80
+      ],
+      "size": [
+        500,
+        620
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "cartwheel/seedance",
+        "mp4",
+        "h264",
+        "auto"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      6,
+      2,
+      0,
+      "CARTWHEEL_MOTION"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "VIDEO"
+    ],
+    [
+      5,
+      3,
+      0,
+      4,
+      0,
+      "VIDEO"
+    ],
+    [
+      6,
+      3,
+      3,
+      4,
+      1,
+      "STRING"
+    ],
+    [
+      7,
+      3,
+      4,
+      4,
+      2,
+      "INT"
+    ],
+    [
+      8,
+      3,
+      5,
+      4,
+      3,
+      "COMBO"
+    ],
+    [
+      9,
+      4,
+      0,
+      5,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

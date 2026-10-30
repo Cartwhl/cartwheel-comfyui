@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import * as THREE from '../web/vendor/build/three.module.js';
+import {ensureNormals} from '../web/mesh_normals.js';
+const sphere=new THREE.SphereGeometry(1,16,8);
+const real=sphere.getAttribute('normal');
+ensureNormals(sphere);assert.equal(sphere.getAttribute('normal'),real,'Valid normals changed.');
+const broken=new THREE.Float32BufferAttribute(new Float32Array(real.array.length),3);
+for(let i=0;i<broken.count;i++)broken.setXYZ(i,0,1,0);
+sphere.setAttribute('normal',broken);
+const other=sphere.clone();other.setAttribute('normal',broken);
+ensureNormals(sphere);
+assert.notEqual(sphere.getAttribute('normal'),broken);
+assert.equal(other.getAttribute('normal'),broken);
+assert.ok(Math.abs(sphere.getAttribute('normal').getX(50))>.1);
+sphere.deleteAttribute('normal');ensureNormals(sphere);assert.ok(sphere.getAttribute('normal'));
+sphere.dispose();other.dispose();
+console.log('Real normals retained; missing/placeholder normals rebuilt without changing a shared primitive attribute.');

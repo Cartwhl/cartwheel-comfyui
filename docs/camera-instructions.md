@@ -1,0 +1,26 @@
+# Camera instructions · one whole-clip request
+
+The embedded Camera Preview panel uses native Comfy GPT, Claude and Gemini text adapters. The user enters instructions in the panel. The system prompt is hidden in the UI and remains separate in the request. Submit camera job is enabled after entering instructions and passing a local token/context review. No provider call occurs while preparing or reviewing the scene.
+
+## Spending safeguards
+
+- Exactly one model generation per click, with bounded total output tokens (8,192, including reasoning). No time chunks, automatic retries, repair calls, or continuations.
+- A local tokenizer checks the complete prompt and its token allowance. Cost estimates and token counts are omitted from the editor UI; local request checks still run before submission. **There is no dollar cap**, so higher-priced models can be submitted. Output remains capped at 8,192 tokens and the whole request stays within the 120,000-token allowance. Comfy determines actual charges.
+- Rates reflect installed native price badges audited October 28, 2026, with input/cache-write allowance, tokenizer uncertainty, and cost headroom. Pricing must be reviewed when native integrations change. Unknown prices and adapters without output limits are excluded. Seed is excluded because its installed adapter lacks a maximum-output input.
+- A short-lived, single-use local review ticket binds the exact prompt, model, scope, scene and output cap. Old raw-pose requests are rejected. Editing inputs invalidates the browser review; submission reviews again before queueing. Double clicks are guarded.
+- Provider errors, malformed/truncated output, timeout and stopping never cause another paid submission automatically. Stop ends local waiting; an already submitted provider call may still incur its charge.
+- Install this node’s requirements and restart ComfyUI; the local counter uses tiktoken. Its first initialization may fetch public tokenizer vocabulary files, with no model/API call. Counter failure blocks submission.
+
+## Motion reference and animation output
+
+The single request contains the entire clip, all selected ranges and current camera context. World-space main body joint positions use integer millimeters and piecewise linear tracks. Tracks retain all source poses within a 10 mm positional tolerance plus millimeter rounding. Recognized rigs omit finger, procedural and twist joints; unknown rigs retain their usable real joints without invented semantic labels. Head orientation tracks have a 2 degree interpolation tolerance. This reference approximation does not change the original rendered motion. Finger-level choreography is outside this compact reference’s detail.
+
+The model receives the existing camera’s sampled position, orientation, lens/FOV, projection, timeline block labels/timing and movement type. Users can request edits to this current animation. The default prompt preserves unspecified aspects during edits and uses one continuous camera per permitted range unless the user requests multiple cameras/cuts or timeline settings require preserving multiple blocks. The model authors numerical camera position, quaternion, vertical FOV and optional projection. Generated blocks can select cubic or linear position interpolation. The prompt requests cubic curves for smooth sweeps: time-aware Hermite interpolation passes through every authored position and shares limited velocity tangents at intermediate samples. Lens/FOV remains linear and orientation uses quaternion slerp. No preset tracking, automatic aim or collision avoidance is added. Legacy saved cameras and blocks without an interpolation field retain their original linear interpolation. The entire selected interval must be covered exactly; nonadjacent selections can be edited together in the same request while preserving unselected cameras and protected boundaries. Successful model results apply immediately as one undoable camera edit. A green Completed indicator beside Submit clears when the prompts, model, scope or camera change; failed, stopped or stale results leave the camera unchanged. Scene save retains editable blocks; combined camera export retains the resulting animation.
+
+Earlier default system prompts migrate to the current compact format and one-camera editing policy automatically. Custom system prompts are retained; their authors should respect the new world-track/input-unit contract.
+
+## Verification
+
+Offline tests cover cubic position/velocity continuity at unevenly timed points, exact authored key poses, unchanged lens/orientation interpolation, holds, legacy linear paths, protected neighboring camera poses, curve save/reload and guide/playback agreement; also positional error at every source pose, head orientation, rig fallback, cut boundaries, single-request graph construction, local estimates, higher-priced models without dollar rejection, token rejection, review expiry/replay, double-click protection, failure without retry, response scope and full camera coverage. Existing rendering/timeline/save tests also run. No paid provider call is used for these checks. Model quality and exact provider billing require separate live acceptance testing.
+
+New camera connections and default transition controls use a 30-frame blend. Explicit saved transition lengths are preserved.
